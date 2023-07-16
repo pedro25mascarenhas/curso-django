@@ -38,7 +38,3 @@ jobs:
       uses: codecov/codecov-action@v3
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-    - name: Run Tests
-      run: |
-        python manage.py test
