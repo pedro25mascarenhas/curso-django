@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'collectfast',
     'django.contrib.staticfiles',
     'pypro.base',
 
@@ -130,6 +131,8 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 
+COLLECTFAST_ENABLED = False
+
 # STORAGE CONFIGURATION IN S3 AWS
 # -------------------------------
 
@@ -141,7 +144,10 @@ if AWS_ACCESS_KEY_ID:
     AWS_AUTO_CREATE_BUCKET = False
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
-    AWS_DEFAULT_ACL = 'private'
+
+    COLLECTFAST_ENABLED = True
+
+    AWS_DEFAULT_ACL = None
 
     # Static Assets
     # ---------------------------
@@ -160,7 +166,5 @@ if AWS_ACCESS_KEY_ID:
 
     INSTALLED_APPS.append('s3_folder_storage')
     INSTALLED_APPS.append('storages')
-
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
